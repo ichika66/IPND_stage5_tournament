@@ -32,12 +32,7 @@ then override files with files mentioned above in this repository.
 
 Second, initialize the tournament database.
 ```
-$ psql
-DROP DATABASE IF EXIST tournament;
-CREATE DATABASE tournament;
-\c tournament
-\i tournament.sql
-\q
+ $ psql -f tournament.sql
 ```
 
 ### Run the test
