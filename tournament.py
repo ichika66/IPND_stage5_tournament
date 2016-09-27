@@ -67,7 +67,7 @@ def registerPlayer(name):
 #    c = db.cursor()
 #    c.execute("INSERT INTO Players (name) VALUES (%s)",(name,))
     db.commit()
-    db.close();
+    db.close()
 
 
 def playerStandings():
@@ -103,10 +103,14 @@ def reportMatch(winner, loser):
     db, cursor = connect()
 #    c.execute("INSERT INTO Matches (player, opponent, result) VALUES (%s, %s, 1)",(winner, loser,))
 #    c.execute("INSERT INTO Matches (player, opponent, result) VALUES (%s, %s, 0)",(loser, winner,))
-    cursor.execute("INSERT INTO Matches (player, opponent, result) VALUES (%s, %s, 1)",(winner, loser,))
-    cursor.execute("INSERT INTO Matches (player, opponent, result) VALUES (%s, %s, 0)",(loser, winner,))
+#    cursor.execute("INSERT INTO Matches (player, opponent, result) VALUES (%s, %s, 1)",(winner, loser,))
+#    cursor.execute("INSERT INTO Matches (player, opponent, result) VALUES (%s, %s, 0)",(loser, winner,))
+#    cursor.execute("INSERT INTO Matches (winner, loser) VALUES (%s, %s)",(loser, winner,))
+    query = "INSERT INTO Matches (winner, loser) VALUES (%s, %s);"
+    parameter = (winner, loser,)
+    cursor.execute(query, parameter)
     db.commit()
-    db.close();
+    db.close()
  
  
 def swissPairings():
