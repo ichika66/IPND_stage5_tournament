@@ -24,25 +24,12 @@ CREATE TABLE Players (
   name text );
 
 -- Create Matches Table
---CREATE TABLE Matches (
---  id serial primary key,
---  player int references Players(id),
---  opponent int references Players(id),
---  result int );
-
 CREATE TABLE Matches (
   id serial primary key,
   winner int references Players(id),
   loser int references Players(id) );
 
 -- Create Wins View which counts of wins of each Player
---CREATE VIEW Wins AS
---  SELECT Players.id, count(Matches.opponent) AS n
---  FROM Players
---  LEFT JOIN (SELECT * FROM Matches WHERE result > 0) AS Matches
---  ON Players.id = Matches.player
---  GROUP BY Players.id;
-
 CREATE VIEW Wins AS
   SELECT Players.id, count(Matches.id) AS n
   FROM Players LEFT JOIN Matches
@@ -50,13 +37,6 @@ CREATE VIEW Wins AS
   GROUP BY Players.id;
 
 -- Create count view to count the number of matches for each player
---CREATE VIEW Count AS
---  SELECT Players.id, Count(Matches.opponent) AS n 
--- FROM Players
---  LEFT JOIN Matches
---  ON Players.id = Matches.player
---  GROUP BY Players.id;
-
 CREATE VIEW Count AS
   SELECT Players.id, Count(Matches.id) AS n 
   FROM Players LEFT JOIN Matches
