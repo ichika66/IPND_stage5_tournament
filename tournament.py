@@ -126,12 +126,13 @@ def swissPairings():
     """
 #    db = connect()
 #    c = db.cursor()
-    db, cursor = connect()
-    cursor.execute("SELECT id, name, wins FROM Standings ORDER BY wins DESC")
+#    db, cursor = connect()
+#    cursor.execute("SELECT id, name, wins FROM Standings ORDER BY wins DESC")
 #    c.execute("SELECT id, name, wins FROM Standings ORDER BY wins DESC")
 #    rows = c.fetchall()
-    rows = cursor.fetchall()
-    db.close();
+#    rows = cursor.fetchall()
+#    db.close();
+    rows = playerStandings()
     i = 0
     pairings = []
     while i < len(rows):
