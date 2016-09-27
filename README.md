@@ -30,12 +30,16 @@ First, change diretory to the tournament.
 ```
 then override files with files mentioned above in this repository.
 
-Second, inisitalize the database.
+Second, initialize the tournament database.
 ```
- $ psql 
- \i tournament.sql
- \q
+$ psql
+DROP DATABASE IF EXIST tournament;
+CREATE DATABASE tournament;
+\c tournament
+\i tournament.sql
+\q
 ```
+
 ### Run the test
 Run tournament_test.py file to see the results.
 ```
